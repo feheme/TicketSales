@@ -1,0 +1,15 @@
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\bin\Debug\net7.0\TicketSales.Model.deps.json
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\bin\Debug\net7.0\TicketSales.Model.dll
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\bin\Debug\net7.0\TicketSales.Model.pdb
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\bin\Debug\net7.0\TicketSales.Core.dll
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\bin\Debug\net7.0\TicketSales.Core.pdb
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\obj\Debug\net7.0\TicketSales.Model.csproj.AssemblyReference.cache
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\obj\Debug\net7.0\TicketSales.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\obj\Debug\net7.0\TicketSales.Model.AssemblyInfoInputs.cache
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\obj\Debug\net7.0\TicketSales.Model.AssemblyInfo.cs
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\obj\Debug\net7.0\TicketSales.Model.csproj.CoreCompileInputs.cache
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\obj\Debug\net7.0\TicketSales.Model.csproj.CopyComplete
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\obj\Debug\net7.0\TicketSales.Model.dll
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\obj\Debug\net7.0\refint\TicketSales.Model.dll
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\obj\Debug\net7.0\TicketSales.Model.pdb
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.Model\obj\Debug\net7.0\ref\TicketSales.Model.dll

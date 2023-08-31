@@ -23,7 +23,7 @@ namespace TicketSales.DAL.Concrete
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=FEHEME\\SQLEXPRESS;Database=TicketSalesDB;Trusted_Connection=True");
+            optionsBuilder.UseSqlServer("Server=FEHEME\\SQLEXPRESS;Database=TicketSalesDB;Trusted_Connection=True;Encrypt=False");
         }
 
     }
