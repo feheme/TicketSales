@@ -13,6 +13,7 @@ builder.Services.AddScopeBLL();
 
 
 
+builder.Services.AddAutoMapper(typeof(Program));
 
 
 builder.Services.AddEndpointsApiExplorer();

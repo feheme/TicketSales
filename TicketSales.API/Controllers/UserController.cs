@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TicketSales.BLL.Abstract;
+using TicketSales.Model.DTOs.UserDTO;
+using TicketSales.Model.Entities;
 
 namespace TicketSales.API.Controllers
 {
@@ -9,6 +12,8 @@ namespace TicketSales.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserBLL _userBLL;
+        private readonly IMapper _mapper;
+
 
         public UserController(IUserBLL userBLL)
         {
@@ -22,12 +27,17 @@ namespace TicketSales.API.Controllers
             var values = _userBLL.GetAll();
             return Ok(values);
         }
-        //[HttpPost]
-        //public IActionResult AddSubscribe(Subscribe subscribe)
-        //{
-        //    _subscribeService.TInsert(subscribe);
-        //    return Ok();
-        //}
+
+        [HttpPost]
+        public IActionResult AddSubscribe(AddUserDTO userDTO)
+        {
+         
+            var values = _mapper.Map<User>(userDTO);
+
+            _userBLL.Insert(values);
+            return Ok();
+        }
+
         [HttpDelete]
         public IActionResult DeleteSubscribe(int id)
         {
@@ -40,10 +50,12 @@ namespace TicketSales.API.Controllers
         //{
         //    _subscribeService.TUpdate(subscribe);
         //    return Ok();
-        }
-        //[HttpGet("{id}")]
-        //public IActionResult GetSubscribe(int id)
-        //{
-        //    var values = _userBLL.
         //}
+        [HttpGet("{id}")]
+        public IActionResult GetSubscribe(int id)
+        {
+            var values = _userBLL.Get(id);
+            return Ok(values);
+        }
+    }
 }

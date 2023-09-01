@@ -1,14 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "kYOSStwc+PxANDSswBQ4YK8gp7N9HT5et1NDD/gG/c3uJS/U4uTcaeHv5G/IP3Wxi0RhqvKY5CMZwvqy8HH1jg==",
+  "dgSpecHash": "LnbRyHj8DeWTRX1sucmO9lkXFCaF89TLb70P/V8L1Ys4nqzbkbXCssNfslPy8GFfny6VtJgui7oGDdERPohAKw==",
   "success": true,
   "projectFilePath": "C:\\Users\\fth-h\\OneDrive\\Masaüstü\\bootcamp\\TicketSales\\TicketSales.API\\TicketSales.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\fth-h\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\fth-h\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\fth-h\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\fth-h\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\fth-h\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\fth-h\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\fth-h\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\fth-h\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\fth-h\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.2\\microsoft.data.sqlclient.5.0.2.nupkg.sha512",
     "C:\\Users\\fth-h\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "C:\\Users\\fth-h\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.10\\microsoft.entityframeworkcore.7.0.10.nupkg.sha512",

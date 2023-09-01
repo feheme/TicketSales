@@ -178,7 +178,7 @@ namespace TicketSales.DAL.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("Role")
+                    b.Property<int?>("Role")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -192,7 +192,7 @@ namespace TicketSales.DAL.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2023, 8, 31, 15, 9, 8, 860, DateTimeKind.Local).AddTicks(7212),
+                            CreatedDate = new DateTime(2023, 9, 1, 17, 21, 30, 736, DateTimeKind.Local).AddTicks(7633),
                             Email = "akb@mail.com",
                             FirstName = "Marty",
                             IsActive = true,

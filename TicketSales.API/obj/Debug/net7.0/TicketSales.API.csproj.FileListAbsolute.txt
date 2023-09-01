@@ -81,3 +81,5 @@ C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.API\bin\Debu
 C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.API\obj\Debug\net7.0\TicketSales.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.API\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\fth-h\OneDrive\Masaüstü\bootcamp\TicketSales\TicketSales.API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
