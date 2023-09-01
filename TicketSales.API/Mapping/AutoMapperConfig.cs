@@ -23,6 +23,8 @@ namespace TicketSales.API.Mapping
 
             CreateMap<AddEventDTO, Event>().ReverseMap();
 
+            CreateMap<RegisterUserDTO, User>().ReverseMap();
+
         }
     }
 }

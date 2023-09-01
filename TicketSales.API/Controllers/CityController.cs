@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using TicketSales.BLL.Abstract;
 using TicketSales.Model.DTOs.CategoryDTO;
 using TicketSales.Model.DTOs.CityDTO;
@@ -8,8 +10,10 @@ using TicketSales.Model.Entities;
 
 namespace TicketSales.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] 
     [ApiController]
+    [Authorize(Roles = "Admin")]  
+
     public class CityController : ControllerBase
     {
         private readonly ICityBll _cityBll;
