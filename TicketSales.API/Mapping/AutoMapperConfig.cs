@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
+using System.Diagnostics.Tracing;
 using TicketSales.Model.DTOs.CategoryDTO;
+using TicketSales.Model.DTOs.CityDTO;
+using TicketSales.Model.DTOs.EventDTO;
 using TicketSales.Model.DTOs.UserDTO;
 using TicketSales.Model.Entities;
 
@@ -15,6 +18,10 @@ namespace TicketSales.API.Mapping
             CreateMap<AddUserDTO, User>().ReverseMap();
 
             CreateMap<AddCategoryDTO, Category>().ReverseMap();
+
+            CreateMap<AddCityDTO, City>().ReverseMap();
+
+            CreateMap<AddEventDTO, Event>().ReverseMap();
 
         }
     }
