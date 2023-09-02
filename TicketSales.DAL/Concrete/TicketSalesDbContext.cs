@@ -15,6 +15,7 @@ namespace TicketSales.DAL.Concrete
         public DbSet<City> Cities { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Category> Categories { get; set; }
+      
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

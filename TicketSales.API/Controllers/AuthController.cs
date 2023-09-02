@@ -11,6 +11,7 @@ using TicketSales.BLL.Abstract;
 using TicketSales.Model.DTOs.CategoryDTO;
 using TicketSales.Model.DTOs.UserDTO;
 using TicketSales.Model.Entities;
+using TicketSales.Model.Enums;
 
 namespace TicketSales.API.Controllers
 {
@@ -51,10 +52,39 @@ namespace TicketSales.API.Controllers
 
                 return StatusCode(500, "Mail Daha Önce Kullanılmıştır.");
             }
-           
 
 
         }
+
+
+        [HttpPost("registercompany")]
+        public async Task<IActionResult> RegisterCompany(RegisterCompanyDTO registerCompanyDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            User user = new User()
+            {
+
+                Password = registerCompanyDTO.Password,
+                FirstName = registerCompanyDTO.CompanyName,
+                LastName = registerCompanyDTO.WebSite,
+                Role = UserRole.Company,
+                Email = registerCompanyDTO.Email,
+
+
+            };
+
+            _userBLL.Insert(user);
+            return Ok();
+
+
+
+        }
+
+
 
         [HttpPost("login")]
 
@@ -74,9 +104,9 @@ namespace TicketSales.API.Controllers
 
         private string CreateToken(User user)
         {
-            List<Claim> claims = new List<Claim>();          
-            claims.Add(new Claim(ClaimTypes.Name, user.FirstName,user.LastName));            
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, Convert.ToString( user.ID)));
+            List<Claim> claims = new List<Claim>();
+            claims.Add(new Claim(ClaimTypes.Name, user.FirstName, user.LastName));
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, Convert.ToString(user.ID)));
             claims.Add(new Claim(ClaimTypes.Role, user.Role.ToString()));
 
 
@@ -93,7 +123,7 @@ namespace TicketSales.API.Controllers
             string userToken = tokenHandler.WriteToken(securityToken);
             return userToken;
 
-            
+
         }
     }
 }

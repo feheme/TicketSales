@@ -28,7 +28,13 @@ namespace TicketSales.API.Controllers
             _mapper = mapper;
         }
 
+
+        [Authorize(Roles = "Standart,Admin,Company")]
+
+        [Produces("application/json", "application/xml")] // JSON ve XML formatlarını destekler
+        [Consumes("application/json", "application/xml")] // JSON ve XML formatlarını kabul eder
         [HttpGet]
+
         public IActionResult SubscribeList()
         {
             var values = _eventBLL.GetAll();

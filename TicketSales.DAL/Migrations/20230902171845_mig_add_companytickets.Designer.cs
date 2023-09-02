@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketSales.DAL.Concrete;
 
@@ -11,9 +12,11 @@ using TicketSales.DAL.Concrete;
 namespace TicketSales.DAL.Migrations
 {
     [DbContext(typeof(TicketSalesDbContext))]
-    partial class TicketSalesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230902171845_mig_add_companytickets")]
+    partial class mig_add_companytickets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,6 +68,40 @@ namespace TicketSales.DAL.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("TicketSales.Model.Entities.CompanyTicket", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WebSite")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("CompanyTickets");
                 });
 
             modelBuilder.Entity("TicketSales.Model.Entities.Event", b =>
@@ -185,7 +222,7 @@ namespace TicketSales.DAL.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2023, 9, 2, 20, 25, 57, 860, DateTimeKind.Local).AddTicks(9641),
+                            CreatedDate = new DateTime(2023, 9, 2, 20, 18, 44, 999, DateTimeKind.Local).AddTicks(2416),
                             Email = "akb@mail.com",
                             FirstName = "Marty",
                             IdEvent = 0,
