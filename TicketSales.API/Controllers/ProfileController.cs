@@ -21,19 +21,19 @@ namespace TicketSales.API.Controllers
     public class ProfileController : ControllerBase
     {
         private readonly IUserBLL _userBLL;
-        
+
 
         public ProfileController(IUserBLL userBLL, IEventBLL eventBLL)
         {
-            _userBLL = userBLL;            
+            _userBLL = userBLL;
         }
 
         [HttpGet]
         public IActionResult GetProfile()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var user =  _userBLL.Get(Convert.ToInt32(userId));               
-            
+            var user = _userBLL.Get(Convert.ToInt32(userId));
+
             return Ok(user);
         }
 
@@ -41,13 +41,13 @@ namespace TicketSales.API.Controllers
         [HttpGet("action")]
         public IActionResult GetProfileCreated()
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;            
-            
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
 
             var context = new TicketSalesDbContext();
-            var naber = context.Events.Where(x => x.OrganizerId == Convert.ToInt32(userId)).ToList();                 
-            
-                      
+            var naber = context.Events.Where(x => x.OrganizerId == Convert.ToInt32(userId)).ToList();
+
+
             return Ok(naber);
         }
 
@@ -64,14 +64,24 @@ namespace TicketSales.API.Controllers
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var context = new TicketSalesDbContext();
 
-            var naber = context.Events.Where(x => x.OrganizerId == Convert.ToInt32(userId) && x.IsActive == false).FirstOrDefault();
+            var eventUpdate = context.Events.Where(x => x.OrganizerId == Convert.ToInt32(userId) && x.IsActive == false).FirstOrDefault();
 
-            naber.Address = model.Address;
-            naber.Capacity = model.Capacity;
+            if (eventUpdate.ApplicationDeadline > DateTime.Now.Date.AddDays(5))
+            {
+                eventUpdate.Address = model.Address;
+                eventUpdate.Capacity = model.Capacity;
+                eventUpdate.IsActive = model.IsActive;
 
-            context.SaveChanges();
+                context.SaveChanges();
 
-            return Ok();
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+
 
 
 
@@ -80,7 +90,7 @@ namespace TicketSales.API.Controllers
 
 
         [HttpPatch("changepassword")]
-        public  IActionResult ChangePassword(ChangePasswordDTO model)
+        public IActionResult ChangePassword(ChangePasswordDTO model)
         {
             if (!ModelState.IsValid)
             {
@@ -108,9 +118,9 @@ namespace TicketSales.API.Controllers
 
             return Ok();
 
-          
 
-           
+
+
         }
     }
 }

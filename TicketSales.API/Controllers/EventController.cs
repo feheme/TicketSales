@@ -14,7 +14,7 @@ namespace TicketSales.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Standart,Admin")]
+
 
 
     public class EventController : ControllerBase
@@ -40,6 +40,8 @@ namespace TicketSales.API.Controllers
             var values = _eventBLL.GetAll();
             return Ok(values);
         }
+
+        [Authorize(Roles = "Standart")]
         [HttpGet("[action]")]
         public IActionResult GetEventsWithCategoryAndCity(string category = null, string city = null)
         {
@@ -47,6 +49,7 @@ namespace TicketSales.API.Controllers
             return Ok(values);
         }
 
+        [Authorize(Roles = "Standart")]
         [HttpPost]
         public IActionResult AddEvent(AddEventDTO addEventDTO)
         {
@@ -55,12 +58,14 @@ namespace TicketSales.API.Controllers
 
             var values = _mapper.Map<Event>(addEventDTO);
             values.OrganizerId = Convert.ToInt32(userId);
+            values.IsActive = false;
 
 
             _eventBLL.Insert(values);
             return Ok();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public IActionResult DeleteEvent(int id)
         {
@@ -74,18 +79,24 @@ namespace TicketSales.API.Controllers
         //    _subscribeService.TUpdate(subscribe);
         //    return Ok();
         //}
+
+        [Authorize(Roles = "Standart")]
         [HttpGet("{id}")]
         public IActionResult GetEvent(int id)
         {
             var values = _eventBLL.Get(id);
             return Ok(values);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPatch("[action]/{id}")]
         public IActionResult EventApproved(int id)
         {
             _eventBLL.EventStatusChangeApproved(id);
             return Ok();
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPatch("[action]/{id}")]
         public IActionResult EventDelete(int id)
         {
@@ -93,6 +104,8 @@ namespace TicketSales.API.Controllers
             return NoContent();
         }
         [HttpPatch("[action]/{id}")]
+
+        [Authorize(Roles = "Standart")]
         public IActionResult EventJoin(int id)
         {
 

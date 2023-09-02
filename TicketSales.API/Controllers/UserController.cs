@@ -36,7 +36,7 @@ namespace TicketSales.API.Controllers
         [HttpPost]
         public IActionResult AddUser(AddUserDTO userDTO)
         {
-         
+
             var values = _mapper.Map<User>(userDTO);
 
             _userBLL.Insert(values);
@@ -50,12 +50,7 @@ namespace TicketSales.API.Controllers
             _userBLL.DeleteByID(id);
             return Ok();
         }
-        //[HttpPut]
-        //public IActionResult UpdateSubscribe(Subscribe subscribe)
-        //{
-        //    _subscribeService.TUpdate(subscribe);
-        //    return Ok();
-        //}
+
         [HttpGet("{id}")]
         public IActionResult GetUser(int id)
         {

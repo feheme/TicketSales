@@ -43,6 +43,7 @@ namespace TicketSales.API.Controllers
             try
             {
                 var user = _mapper.Map<User>(registerUserDTO);
+                user.IsActive = true;
 
                 _userBLL.Insert(user);
                 return Ok();

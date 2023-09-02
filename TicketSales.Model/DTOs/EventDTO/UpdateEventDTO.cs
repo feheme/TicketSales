@@ -10,8 +10,12 @@ namespace TicketSales.Model.DTOs.EventDTO
     {
       
         public string? Address { get; set; }
-        public int Capacity { get; set; }        
-        
- 
+        public int Capacity { get; set; }
+        public bool IsActive { get; set; }
+
+
+
+
+
     }
 }
