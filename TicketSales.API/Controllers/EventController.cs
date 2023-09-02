@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Security.Claims;
 using TicketSales.BLL.Abstract;
+using TicketSales.DAL.Concrete;
 using TicketSales.Model.DTOs.EventDTO;
 using TicketSales.Model.DTOs.UserDTO;
 using TicketSales.Model.Entities;
@@ -33,6 +34,12 @@ namespace TicketSales.API.Controllers
             var values = _eventBLL.GetAll();
             return Ok(values);
         }
+        [HttpGet("[action]")]
+        public IActionResult SubscribeList123(string category = null, string city = null)
+        {
+            var values = _eventBLL.GetEvents(category, city);
+            return Ok(values);
+        }
 
         [HttpPost]
         public IActionResult AddSubscribe(AddEventDTO addEventDTO)
@@ -42,8 +49,6 @@ namespace TicketSales.API.Controllers
 
             var values = _mapper.Map<Event>(addEventDTO);
             values.OrganizerId = Convert.ToInt32(userId);
-
-
 
 
             _eventBLL.Insert(values);
@@ -80,6 +85,28 @@ namespace TicketSales.API.Controllers
         {
             _eventBLL.EventStatusRemove(id);
             return NoContent();
+        }
+        [HttpPatch("[action]/{id}")]
+        public IActionResult Join(int id)
+        {
+
+            using var context = new TicketSalesDbContext();
+            var values = context.Events.Find(id);
+
+            if (values.Capacity < 1)
+            {
+                return BadRequest("Kapasitesi dolmuştur.");
+            }
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var join = context.Users.Find(Convert.ToInt32(userId));
+            join.IdEvent = values.ID;
+            values.Capacity--;
+            context.SaveChanges();
+
+            return Ok();
+
+
         }
 
     }

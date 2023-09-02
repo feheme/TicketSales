@@ -11,6 +11,7 @@ namespace TicketSales.BLL.Abstract
     {
         void EventStatusChangeApproved(int id);
         void EventStatusRemove(int id);
+        List<Event> GetEvents(string category = null, string city = null);
 
 
     }

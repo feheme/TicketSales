@@ -12,13 +12,7 @@ namespace TicketSales.DAL.Concrete.Repositories
 {
     internal class EventRepository : EFRepositoryBase<Event, TicketSalesDbContext>, IEventDAL
     {
-        public void EventJoin(int id)
-        {
-            using var context = new TicketSalesDbContext();
-            var values = context.Events.Find(id);
-
-          
-        }
+        
 
         public void EventStatusChangeApproved(int id)
         {
@@ -29,6 +23,14 @@ namespace TicketSales.DAL.Concrete.Repositories
         }
 
         public void EventStatusRemove(int id)
+        {
+            using var context = new TicketSalesDbContext();
+            var values = context.Events.Find(id);
+            context.Remove(values);
+            context.SaveChanges();
+        }
+
+        public void Join(int id)
         {
             using var context = new TicketSalesDbContext();
             var values = context.Events.Find(id);

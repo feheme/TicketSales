@@ -12,7 +12,8 @@ namespace TicketSales.DAL.Abstract
     {
         void EventStatusChangeApproved(int id);
         void EventStatusRemove(int id);
-        void EventJoin(int id);
+
+        void Join(int id);
 
     }
 }

@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TicketSales.BLL.Abstract;
 using TicketSales.DAL.Abstract;
+using TicketSales.DAL.Concrete;
 using TicketSales.Model.Entities;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace TicketSales.BLL.Concrete
 {
@@ -49,6 +51,24 @@ namespace TicketSales.BLL.Concrete
         public ICollection<Event> GetAll()
         {
             return _eventDAL.GetAll();
+        }
+
+        public List<Event> GetEvents(string category = null, string city = null)
+        {
+
+            using var context = new TicketSalesDbContext();
+            var query = context.Events.AsQueryable();
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                 query = query.Where(x => x.Category.CategoryName == category);
+            }
+            if (!string.IsNullOrEmpty(city))
+            {
+                 query = query.Where(e => e.City.CityName == city);
+            }
+
+            return query.ToList();
         }
 
         public void Insert(Event entity)

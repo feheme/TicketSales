@@ -20,7 +20,14 @@ namespace TicketSales.Model.Entities
         public string? LastName { get; set; }
         public UserRole? Role { get; set; }
 
-        public ICollection<Event>? Events { get; set; }
+        public int IdEvent { get; set; }
+
+        public Event? Event { get; set; }
+
+
+
+
+
 
 
 

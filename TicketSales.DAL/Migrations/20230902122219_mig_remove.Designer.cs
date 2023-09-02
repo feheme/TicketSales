@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketSales.DAL.Concrete;
 
@@ -11,9 +12,11 @@ using TicketSales.DAL.Concrete;
 namespace TicketSales.DAL.Migrations
 {
     [DbContext(typeof(TicketSalesDbContext))]
-    partial class TicketSalesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230902122219_mig_remove")]
+    partial class mig_remove
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,16 +148,10 @@ namespace TicketSales.DAL.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int?>("EventID")
-                        .HasColumnType("int");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("IdEvent")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -177,18 +174,15 @@ namespace TicketSales.DAL.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("EventID");
-
                     b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2023, 9, 2, 18, 46, 45, 584, DateTimeKind.Local).AddTicks(4012),
+                            CreatedDate = new DateTime(2023, 9, 2, 15, 22, 19, 33, DateTimeKind.Local).AddTicks(8438),
                             Email = "akb@mail.com",
                             FirstName = "Marty",
-                            IdEvent = 0,
                             IsActive = true,
                             LastName = "McFly",
                             Password = "123",
@@ -215,15 +209,6 @@ namespace TicketSales.DAL.Migrations
                     b.Navigation("City");
                 });
 
-            modelBuilder.Entity("TicketSales.Model.Entities.User", b =>
-                {
-                    b.HasOne("TicketSales.Model.Entities.Event", "Event")
-                        .WithMany("Users")
-                        .HasForeignKey("EventID");
-
-                    b.Navigation("Event");
-                });
-
             modelBuilder.Entity("TicketSales.Model.Entities.Category", b =>
                 {
                     b.Navigation("Events");
@@ -232,11 +217,6 @@ namespace TicketSales.DAL.Migrations
             modelBuilder.Entity("TicketSales.Model.Entities.City", b =>
                 {
                     b.Navigation("Events");
-                });
-
-            modelBuilder.Entity("TicketSales.Model.Entities.Event", b =>
-                {
-                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

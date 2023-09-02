@@ -26,7 +26,9 @@ namespace TicketSales.Model.Entities
         public int CityId { get; set; }
         public bool IsApproved { get; set; }
         public int OrganizerId { get; set; }
-        public  ICollection<AddUserDTO>? Users { get; set; } 
+        public ICollection<User> Users { get; set; }
+
+
         public Category? Category { get; set; }
         public City? City { get; set; }
     }
