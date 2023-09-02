@@ -35,20 +35,20 @@ namespace TicketSales.API.Controllers
         [Consumes("application/json", "application/xml")] // JSON ve XML formatlarını kabul eder
         [HttpGet]
 
-        public IActionResult SubscribeList()
+        public IActionResult GetEvents()
         {
             var values = _eventBLL.GetAll();
             return Ok(values);
         }
         [HttpGet("[action]")]
-        public IActionResult SubscribeList123(string category = null, string city = null)
+        public IActionResult GetEventsWithCategoryAndCity(string category = null, string city = null)
         {
             var values = _eventBLL.GetEvents(category, city);
             return Ok(values);
         }
 
         [HttpPost]
-        public IActionResult AddSubscribe(AddEventDTO addEventDTO)
+        public IActionResult AddEvent(AddEventDTO addEventDTO)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
@@ -62,7 +62,7 @@ namespace TicketSales.API.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteSubscribe(int id)
+        public IActionResult DeleteEvent(int id)
         {
 
             _eventBLL.DeleteByID(id);
@@ -75,25 +75,25 @@ namespace TicketSales.API.Controllers
         //    return Ok();
         //}
         [HttpGet("{id}")]
-        public IActionResult GetSubscribe(int id)
+        public IActionResult GetEvent(int id)
         {
             var values = _eventBLL.Get(id);
             return Ok(values);
         }
         [HttpPatch("[action]/{id}")]
-        public IActionResult Approve(int id)
+        public IActionResult EventApproved(int id)
         {
             _eventBLL.EventStatusChangeApproved(id);
             return Ok();
         }
         [HttpPatch("[action]/{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult EventDelete(int id)
         {
             _eventBLL.EventStatusRemove(id);
             return NoContent();
         }
         [HttpPatch("[action]/{id}")]
-        public IActionResult Join(int id)
+        public IActionResult EventJoin(int id)
         {
 
             using var context = new TicketSalesDbContext();

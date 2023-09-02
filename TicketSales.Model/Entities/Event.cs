@@ -28,7 +28,6 @@ namespace TicketSales.Model.Entities
         public int OrganizerId { get; set; }
         public ICollection<User> Users { get; set; }
 
-
         public Category? Category { get; set; }
         public City? City { get; set; }
     }

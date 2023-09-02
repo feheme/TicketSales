@@ -45,8 +45,7 @@ namespace TicketSales.API.Controllers
             
 
             var context = new TicketSalesDbContext();
-            var naber = context.Events.Where(x => x.OrganizerId == Convert.ToInt32(userId)).ToList();     
-            
+            var naber = context.Events.Where(x => x.OrganizerId == Convert.ToInt32(userId)).ToList();                 
             
                       
             return Ok(naber);
@@ -54,8 +53,8 @@ namespace TicketSales.API.Controllers
 
 
 
-        [HttpPatch("naber")]
-        public IActionResult naber(UpdateEventDTO model)
+        [HttpPatch("[action]")]
+        public IActionResult UpdateEvent(UpdateEventDTO model)
         {
             if (!ModelState.IsValid)
             {

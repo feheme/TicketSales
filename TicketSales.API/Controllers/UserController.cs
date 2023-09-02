@@ -27,14 +27,14 @@ namespace TicketSales.API.Controllers
 
 
         [HttpGet]
-        public IActionResult SubscribeList()
+        public IActionResult GetUsers()
         {
             var values = _userBLL.GetAll();
             return Ok(values);
         }
 
         [HttpPost]
-        public IActionResult AddSubscribe(AddUserDTO userDTO)
+        public IActionResult AddUser(AddUserDTO userDTO)
         {
          
             var values = _mapper.Map<User>(userDTO);
@@ -44,7 +44,7 @@ namespace TicketSales.API.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteSubscribe(int id)
+        public IActionResult DeleteUser(int id)
         {
 
             _userBLL.DeleteByID(id);
@@ -57,7 +57,7 @@ namespace TicketSales.API.Controllers
         //    return Ok();
         //}
         [HttpGet("{id}")]
-        public IActionResult GetSubscribe(int id)
+        public IActionResult GetUser(int id)
         {
             var values = _userBLL.Get(id);
             return Ok(values);

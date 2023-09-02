@@ -43,7 +43,7 @@ namespace TicketSales.API.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteSubscribe(int id)
+        public IActionResult DeleteCategory(int id)
         {
 
             _categoryBLL.DeleteByID(id);

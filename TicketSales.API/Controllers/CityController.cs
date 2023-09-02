@@ -26,14 +26,14 @@ namespace TicketSales.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult SubscribeList()
+        public IActionResult GetCities()
         {
             var values = _cityBll.GetAll();
             return Ok(values);
         }
 
         [HttpPost]
-        public IActionResult AddSubscribe(AddCityDTO addCityDTO)
+        public IActionResult AddCity(AddCityDTO addCityDTO)
         {
 
             var values = _mapper.Map<City>(addCityDTO);
@@ -43,7 +43,7 @@ namespace TicketSales.API.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteSubscribe(int id)
+        public IActionResult DeleteCity(int id)
         {
 
             _cityBll.DeleteByID(id);
@@ -58,7 +58,7 @@ namespace TicketSales.API.Controllers
         //}
 
         [HttpGet("{id}")]
-        public IActionResult GetSubscribe(int id)
+        public IActionResult GetCity(int id)
         {
             var values = _cityBll.Get(id);
             return Ok(values);
