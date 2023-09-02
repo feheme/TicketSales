@@ -19,7 +19,10 @@ namespace TicketSales.Model.Entities
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public UserRole? Role { get; set; }
-        public ICollection<Event>? Events { get; set; } = new List<Event>();
+
+        public ICollection<Event>? Events { get; set; }
+
+
 
 
     }

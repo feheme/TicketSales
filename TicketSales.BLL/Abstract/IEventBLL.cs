@@ -9,5 +9,9 @@ namespace TicketSales.BLL.Abstract
 {
     public interface IEventBLL : IBaseBLL<Event>
     {
+        void EventStatusChangeApproved(int id);
+        void EventStatusRemove(int id);
+
+
     }
 }

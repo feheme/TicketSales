@@ -34,10 +34,24 @@ namespace TicketSales.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterUserDTO registerUserDTO)
         {
-            var user = _mapper.Map<User>(registerUserDTO);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            _userBLL.Insert(user);
-            return Ok();
+            try
+            {
+                var user = _mapper.Map<User>(registerUserDTO);
+
+                _userBLL.Insert(user);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Mail Daha Önce Kullanılmıştır.");
+            }
+           
 
 
         }
@@ -60,11 +74,9 @@ namespace TicketSales.API.Controllers
 
         private string CreateToken(User user)
         {
-            List<Claim> claims = new List<Claim>();
-            //claims.Add(new Claim(ClaimTypes.Name, "Marty McFly"));
-            claims.Add(new Claim(ClaimTypes.Name, user.FirstName,user.LastName));
-            // ayırt edici özellik olsun bir tane
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Email));
+            List<Claim> claims = new List<Claim>();          
+            claims.Add(new Claim(ClaimTypes.Name, user.FirstName,user.LastName));            
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, Convert.ToString( user.ID)));
             claims.Add(new Claim(ClaimTypes.Role, user.Role.ToString()));
 
 

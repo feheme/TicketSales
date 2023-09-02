@@ -10,5 +10,9 @@ namespace TicketSales.DAL.Abstract
 {
     public interface IEventDAL : IRepository<Event>
     {
+        void EventStatusChangeApproved(int id);
+        void EventStatusRemove(int id);
+        void EventJoin(int id);
+
     }
 }

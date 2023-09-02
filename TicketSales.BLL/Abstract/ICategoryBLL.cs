@@ -9,5 +9,7 @@ namespace TicketSales.BLL.Abstract
 {
     public interface ICategoryBLL : IBaseBLL<Category>
     {
+    
+
     }
 }

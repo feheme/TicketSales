@@ -15,5 +15,7 @@ namespace TicketSales.Model.Entities
         }
 
         public string? CategoryName { get; set; }
+        public ICollection<Event> Events { get; set; }
+
     }
 }

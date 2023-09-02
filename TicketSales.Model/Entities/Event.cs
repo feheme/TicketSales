@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TicketSales.Core.Entity;
+using TicketSales.Model.DTOs.UserDTO;
 
 namespace TicketSales.Model.Entities
 {
@@ -25,7 +26,7 @@ namespace TicketSales.Model.Entities
         public int CityId { get; set; }
         public bool IsApproved { get; set; }
         public int OrganizerId { get; set; }
-        public  ICollection<User>? Users { get; set; } = new List<User>();
+        public  ICollection<AddUserDTO>? Users { get; set; } 
         public Category? Category { get; set; }
         public City? City { get; set; }
     }

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using TicketSales.BLL.Abstract;
 using TicketSales.Model.DTOs.CategoryDTO;
 using TicketSales.Model.DTOs.UserDTO;
@@ -10,6 +12,8 @@ namespace TicketSales.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
+
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryBLL _categoryBLL;
@@ -22,20 +26,20 @@ namespace TicketSales.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult SubscribeList()
+        public IActionResult GetCategories()
         {
             var values = _categoryBLL.GetAll();
             return Ok(values);
         }
 
         [HttpPost]
-        public IActionResult AddSubscribe(AddCategoryDTO addCategoryDTO)
+        public IActionResult AddCategory(AddCategoryDTO addCategoryDTO)
         {
 
             var values = _mapper.Map<Category>(addCategoryDTO);
 
             _categoryBLL.Insert(values);
-            return Ok();
+            return CreatedAtAction(nameof(GetCategory), new { ID = values.ID }, addCategoryDTO);
         }
 
         [HttpDelete]
@@ -52,9 +56,14 @@ namespace TicketSales.API.Controllers
         //    return Ok();
         //}
         [HttpGet("{id}")]
-        public IActionResult GetSubscribe(int id)
+        public IActionResult GetCategory(int id)
         {
             var values = _categoryBLL.Get(id);
+            if (values == null)
+            {
+                return NotFound();
+            }
+
             return Ok(values);
         }
     }

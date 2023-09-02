@@ -10,6 +10,7 @@ namespace TicketSales.BLL.Abstract
     public interface IUserBLL : IBaseBLL<User>
     {
         User GetUserByLoginData(string mail, string password);
+     
 
     }
 }

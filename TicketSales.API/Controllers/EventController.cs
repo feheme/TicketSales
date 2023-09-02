@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
+using System.Security.Claims;
 using TicketSales.BLL.Abstract;
 using TicketSales.Model.DTOs.EventDTO;
 using TicketSales.Model.DTOs.UserDTO;
@@ -10,6 +13,9 @@ namespace TicketSales.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Standart,Admin")]
+
+
     public class EventController : ControllerBase
     {
         private readonly IEventBLL _eventBLL;
@@ -31,8 +37,14 @@ namespace TicketSales.API.Controllers
         [HttpPost]
         public IActionResult AddSubscribe(AddEventDTO addEventDTO)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
 
             var values = _mapper.Map<Event>(addEventDTO);
+            values.OrganizerId = Convert.ToInt32(userId);
+
+
+
 
             _eventBLL.Insert(values);
             return Ok();
@@ -57,5 +69,18 @@ namespace TicketSales.API.Controllers
             var values = _eventBLL.Get(id);
             return Ok(values);
         }
+        [HttpPatch("[action]/{id}")]
+        public IActionResult Approve(int id)
+        {
+            _eventBLL.EventStatusChangeApproved(id);
+            return Ok();
+        }
+        [HttpPatch("[action]/{id}")]
+        public IActionResult Delete(int id)
+        {
+            _eventBLL.EventStatusRemove(id);
+            return NoContent();
+        }
+
     }
 }

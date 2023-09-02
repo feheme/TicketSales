@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TicketSales.Model.Entities;
 
 namespace TicketSales.Model.DTOs.EventDTO
 {
@@ -20,5 +21,10 @@ namespace TicketSales.Model.DTOs.EventDTO
         public int CityId { get; set; }
         public bool IsApproved { get; set; }
         public int OrganizerId { get; set; }
+        public ICollection<User>? Users { get; set; }
+
+
+
+
     }
 }

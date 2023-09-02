@@ -43,6 +43,8 @@ namespace TicketSales.BLL.Concrete
 
         }
 
+      
+
         public void Insert(Category entity)
         {
             _categoryDAL.Add(entity);

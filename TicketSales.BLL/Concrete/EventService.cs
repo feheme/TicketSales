@@ -31,6 +31,16 @@ namespace TicketSales.BLL.Concrete
 
         }
 
+        public void EventStatusChangeApproved(int id)
+        {
+            _eventDAL.EventStatusChangeApproved(id);
+        }
+
+        public void EventStatusRemove(int id)
+        {
+            _eventDAL.EventStatusRemove(id);
+        }
+
         public Event Get(int entityID)
         {
             return _eventDAL.Get(a => a.ID == entityID);

@@ -15,5 +15,7 @@ namespace TicketSales.Model.Entities
         }
 
         public string CityName { get; set; }
+        public ICollection<Event> Events { get; set; }
+
     }
 }

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using TicketSales.BLL.Abstract;
 using TicketSales.Model.DTOs.UserDTO;
 using TicketSales.Model.Entities;
@@ -9,6 +11,9 @@ namespace TicketSales.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
+
+
     public class UserController : ControllerBase
     {
         private readonly IUserBLL _userBLL;

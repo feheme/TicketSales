@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketSales.DAL.Concrete;
 
@@ -11,9 +12,11 @@ using TicketSales.DAL.Concrete;
 namespace TicketSales.DAL.Migrations
 {
     [DbContext(typeof(TicketSalesDbContext))]
-    partial class TicketSalesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230902093101_mig_add_event_collection")]
+    partial class mig_add_event_collection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,7 +195,7 @@ namespace TicketSales.DAL.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedDate = new DateTime(2023, 9, 2, 12, 50, 53, 423, DateTimeKind.Local).AddTicks(445),
+                            CreatedDate = new DateTime(2023, 9, 2, 12, 31, 1, 711, DateTimeKind.Local).AddTicks(8049),
                             Email = "akb@mail.com",
                             FirstName = "Marty",
                             IsActive = true,

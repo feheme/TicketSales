@@ -57,6 +57,9 @@ namespace TicketSales.BLL.Concrete
             return loginUser;
         }
 
-
+        //public List<Event> GetUsersWithEvents()
+        //{
+        //    return _userDAL.GetAll();
+        //}
     }
 }
